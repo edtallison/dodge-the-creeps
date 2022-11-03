@@ -29,5 +29,11 @@ func _process(delta):
 		velocity = velocity.normalized() * speed
 		$AnimatedSprite.play()
 	else:
-		$AnimatedSprite.stop()
 		# '$' is shorthand for 'get_node()', at relative path to current node
+		$AnimatedSprite.stop()
+		
+	position += velocity * delta
+	# clamp is used to ensure player stays on screen
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
+		
