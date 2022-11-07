@@ -28,6 +28,8 @@ func new_game():
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+	# remove mobs from last game
+	get_tree().call_group("mobs", "queue_free")
 
 func _on_StartTimer_timeout():
 	$MobTimer.start()
